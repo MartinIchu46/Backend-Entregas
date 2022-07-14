@@ -31,10 +31,5 @@ app.get('/productoRandom', (req, res) => {
     res.send(`La cantidad de visitas es ${visitas}`);
 })
 
-app.get('/fyh', (req, res) => {
-    
-    res.send({fyh: moment().format('DD/MM/YYYY HH:mm:ss')});
-})
-
 
 server.on("error", e => console.log(`Error en servidor ${e}`))
