@@ -28,7 +28,7 @@ app.get('/productos', (solicitud, respuesta) => {
 })
  let visitas =0;
 app.get('/productoRandom', (req, res) => {
-    res.send(`La cantidad de visitas es ${visitas}`);
+    
 })
 
 
