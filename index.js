@@ -28,8 +28,10 @@ app.get('/productos', (solicitud, respuesta) => {
 })
  let visitas =0;
 app.get('/productoRandom', (req, res) => {
-    
+    let prodRandom = productos[Math.random()];
+    res.send(`El producto es ${prodRandom}`)
 })
 
 
 server.on("error", e => console.log(`Error en servidor ${e}`))
+
