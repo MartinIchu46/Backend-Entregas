@@ -1,0 +1,32 @@
+html 
+      
+    head
+        title= Entrega 5
+
+    body
+        <!-- form for nombre, apellido edad-->
+        form (action="/productos" method="post")=
+            div(class="form-group")
+                label(for="nombre")= Nombre
+                input(type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre")
+            
+            div(class="form-group")
+                label(for="precio")= Precio
+                input(type="text" class="form-control" id="precio" name="precio" placeholder="Precio")
+            
+            div(class="form-group")
+                label(for="image")= Imagen
+                input(type="text" class="form-control" id="image" name="image" placeholder="Image")
+            
+            button(type="submit" class="btn btn-primary")= Enviar
+    br
+
+    style
+        form 
+            margin:0 auto;
+            width: 50%;
+       
+        body
+            background-color: darkgreen;
+        
+    
