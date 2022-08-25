@@ -2,6 +2,32 @@ const express = require('express')
 const { Router } = express;
 
 
+const socket = io.connect();
+
+socket.on('messages', data => {
+    console.log(data);
+});
+
+function render(data) {
+    const html = data.map((elem, index) => {
+        return(`<div>
+            <strong>${elem.author}</strong>:
+            <em>${elem.text}</em> </div>`)
+    }).join(" ");
+    document.getElementById('messages').innerHTML = html;
+}
+
+function addMessage(e) {
+    const mensaje = {
+        author: document.getElementById('username').value,
+        text: document.getElementById('texto').value
+    };
+    socket.emit('new-message', mensaje);
+    return false;
+}
+
+
+socket.on('messages', data  => render(data));
 
 class Productos {
     constructor(products=[]) {
@@ -10,7 +36,7 @@ class Productos {
     save(obj) {
         if(this.products.length>=1){
             const ids = this.products.map(object => {
-                 return object.id;
+                return object.id;
             });
             
             const max = Math.max(ids);
@@ -41,16 +67,16 @@ class Productos {
 
 }
 
-router.get('/', (req, res) => {
-    res.send(productos)
-});
+// router.get('/', (req, res) => {
+//     res.send(productos)
+// });
 
 
-router.post('/', (req, res) => {
-    const productosGuardar = req.body;
-    productos.push(productosGuardar);
-    res.status(201).send({status: 'ok'})
-});
+// router.post('/', (req, res) => {
+//     const productosGuardar = req.body;
+//     productos.push(productosGuardar);
+//     res.status(201).send({status: 'ok'})
+// });
  
 
-module.exports = Router;
+module.exports = Productos;
